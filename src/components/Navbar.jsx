@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Brand } from "./common";
 import { useScrolled } from "../hooks";
 
@@ -13,24 +13,38 @@ export default function Navbar({ theme, toggleTheme }) {
   const scrolled = useScrolled();
   const [open, setOpen] = useState(false);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (open) {
+      document.body.classList.add("nav-open");
+    } else {
+      document.body.classList.remove("nav-open");
+    }
+    return () => {
+      document.body.classList.remove("nav-open");
+    };
+  }, [open]);
+
   return (
-    <header className={`nav ${scrolled ? "scrolled" : ""}`}>
-      <div className="container nav-inner">
-        <Brand />
-        
-        <nav className={`nav-links ${open ? "open" : ""}`}>
-          {LINKS.map((l) => (
-            <a key={l.href} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>
-          ))}
-          <a href="/polinema-care.apk" download="polinema-care.apk" className="btn btn-primary btn-sm mobile-only-btn" onClick={() => setOpen(false)}>
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: "6px", display: "inline-block", verticalAlign: "middle" }}>
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-              <polyline points="7 10 12 15 17 10" />
-              <line x1="12" y1="15" x2="12" y2="3" />
-            </svg>
-            Download
-          </a>
-        </nav>
+    <>
+      <div className={`nav-overlay ${open ? "open" : ""}`} onClick={() => setOpen(false)} />
+      <header className={`nav ${scrolled ? "scrolled" : ""} ${open ? "nav-menu-open" : ""}`}>
+        <div className="container nav-inner">
+          <Brand />
+          
+          <nav className={`nav-links ${open ? "open" : ""}`}>
+            {LINKS.map((l) => (
+              <a key={l.href} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>
+            ))}
+            <a href="/polinema-care.apk" download="polinema-care.apk" className="btn btn-primary btn-sm mobile-only-btn" onClick={() => setOpen(false)}>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: "6px", display: "inline-block", verticalAlign: "middle" }}>
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              Download
+            </a>
+          </nav>
 
         <div className="nav-actions">
           <button
@@ -69,6 +83,7 @@ export default function Navbar({ theme, toggleTheme }) {
         </div>
       </div>
     </header>
+    </>
   );
 }
 

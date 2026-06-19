@@ -22,11 +22,27 @@ export default function Footer() {
         </div>
         <div className="footer-col">
           <h4>Dirancang Oleh</h4>
-          <div style={{ display: "flex", flexDirection: "column", gap: "10px", color: "#92a4b5", fontSize: "0.92rem" }}>
-            <div>M. Wildan Wibisono <span style={{ opacity: 0.5, marginInline: "6px" }}>/</span> <span style={{ fontFamily: "monospace" }}>244107060118</span></div>
-            <div>Maulida Aprina Putri <span style={{ opacity: 0.5, marginInline: "6px" }}>/</span> <span style={{ fontFamily: "monospace" }}>244107060098</span></div>
-            <div>Fernanda Ayu Putri <span style={{ opacity: 0.5, marginInline: "6px" }}>/</span> <span style={{ fontFamily: "monospace" }}>244107060123</span></div>
-            <div>Rayhan Giri Putra <span style={{ opacity: 0.5, marginInline: "6px" }}>/</span> <span style={{ fontFamily: "monospace" }}>244107060122</span></div>
+          <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+            <div className="footer-author-item">
+              <span>M. Wildan Wibisono</span>
+              <span className="footer-divider">/</span>
+              <span className="footer-nim">244107060118</span>
+            </div>
+            <div className="footer-author-item">
+              <span>Maulida Aprina Putri</span>
+              <span className="footer-divider">/</span>
+              <span className="footer-nim">244107060098</span>
+            </div>
+            <div className="footer-author-item">
+              <span>Fernanda Ayu Putri</span>
+              <span className="footer-divider">/</span>
+              <span className="footer-nim">244107060123</span>
+            </div>
+            <div className="footer-author-item">
+              <span>Rayhan Giri Putra</span>
+              <span className="footer-divider">/</span>
+              <span className="footer-nim">244107060122</span>
+            </div>
           </div>
         </div>
       </div>

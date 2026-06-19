@@ -264,7 +264,7 @@ export function FAQAccordion() {
                 <span>{faq.question}</span>
                 <span className="faq-icon-wrapper">+</span>
               </button>
-              <div className="faq-answer" style={{ maxHeight: activeIndex === i ? "200px" : "0" }}>
+              <div className="faq-answer" style={{ maxHeight: activeIndex === i ? "500px" : "0" }}>
                 <div className="faq-answer-inner">
                   <p>{faq.answer}</p>
                 </div>
